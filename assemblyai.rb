@@ -5,12 +5,12 @@
 class Assemblyai < Formula
   desc "A quick and easy way to test assemblyAI's transcription features on your terminal"
   homepage "https://www.assemblyai.com/"
-  version "0.12"
+  version "0.13"
   license "Apache 2.0"
 
   on_macos do
-    url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.12/assemblyai_0.12_darwin_all.tar.gz"
-    sha256 "40a8afe4c313cd935c0612e820425fc708eb1f6f6a9a8742325e8a30c685a517"
+    url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.13/assemblyai_0.13_darwin_all.tar.gz"
+    sha256 "c0f6d4561206a277f0ac61bad26686092335396ea04e70b488da95633c858272"
 
     def install
       bin.install "assemblyai"
@@ -18,17 +18,25 @@ class Assemblyai < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.12/assemblyai_0.12_linux_arm64.tar.gz"
-      sha256 "06d7cde5a4935d28346f019f39f69dd5e00f33771551b11e48916cc35a3ac02d"
+    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.13/assemblyai_0.13_linux_armv6.tar.gz"
+      sha256 "0327cd41ef25876737ba70ea475b4b564546b694bc9ab40d4bfeb24f99b1423f"
 
       def install
         bin.install "assemblyai"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.12/assemblyai_0.12_linux_amd64.tar.gz"
-      sha256 "39111fcc625b66691ef66e2ae48bf4f2bde180c059c988be4ea88179cd0c3808"
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.13/assemblyai_0.13_linux_amd64.tar.gz"
+      sha256 "19b2223d44ca2edc512d6b9fa522ec48962e9fe097479f49e45d4a0bba22d6e8"
+
+      def install
+        bin.install "assemblyai"
+      end
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.13/assemblyai_0.13_linux_arm64.tar.gz"
+      sha256 "edcbb1ccd24783c0d3ac566c799fba69c868a986edb24e0d4561c837d850e1a8"
 
       def install
         bin.install "assemblyai"
