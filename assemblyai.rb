@@ -5,12 +5,12 @@
 class Assemblyai < Formula
   desc "A quick and easy way to test assemblyAI's transcription features on your terminal"
   homepage "https://www.assemblyai.com/"
-  version "0.9"
+  version "0.10"
   license "Apache 2.0"
 
   on_macos do
-    url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.9/assemblyai-cli_0.9_darwin_all.tar.gz"
-    sha256 "afefdde4c9e30116b060cf942bdd10074865ad7278fc456c4caf24328554fa31"
+    url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.10/assemblyai-cli_0.10_darwin_all.tar.gz", using: CurlDownloadStrategy
+    sha256 "4bc6990d989df949ca7919b105b875e0fa09d5d4929024796042fa1438d5e539"
 
     def install
       bin.install "assemblyai-cli"
@@ -19,20 +19,32 @@ class Assemblyai < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.9/assemblyai-cli_0.9_linux_arm64.tar.gz"
-      sha256 "f470665fc245c03a5a7b483ba745fc39aae84a9502c4ab6513f0e6c565a4d094"
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.10/assemblyai-cli_0.10_linux_arm64.tar.gz", using: CurlDownloadStrategy
+      sha256 "3c4797cd98baefcb2fdea86a03219d2e087856044130e0312bf3fdb8d8914cbf"
 
       def install
         bin.install "assemblyai"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.9/assemblyai-cli_0.9_linux_amd64.tar.gz"
-      sha256 "6fd10accca80f66ba4cd20bda9701cd738ec07a50853f95d7a2d2894c01c1c7e"
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v0.10/assemblyai-cli_0.10_linux_amd64.tar.gz", using: CurlDownloadStrategy
+      sha256 "a42b8c3ea6a8537119c5ffe52793d0278a239c1afd1216a3fb08644ff53d3120"
 
       def install
         bin.install "assemblyai"
       end
     end
+  end
+
+  test do
+    output = shell_output("#{bin}/assemblyai-cli config 1234567890")
+    expected = "Invalid token. Try again, and if the problem persists, contact support at support@assemblyai.com"
+    assert_match expected, output
+
+    output = shell_output("#{bin}/assemblyai-cli transcribe 1234567890")
+    assert_match "You must login first. Run `assemblyai config <token>`\n", output
+
+    output = shell_output("#{bin}/assemblyai-cli get 1234567890")
+    assert_match "You must login first. Run `assemblyai config <token>`\n", output
   end
 end
