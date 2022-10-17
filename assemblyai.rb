@@ -55,7 +55,7 @@ class Assemblyai < Formula
   end
 
   def post_install
-    etc.install system("assemblyai welcome -i -v={{ .Tag }} -m=brew")
+    etc.install puts `assemblyai welcome -i -v={{ .Tag }} -m=brew`
   end
 
   test do
