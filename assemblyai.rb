@@ -55,7 +55,7 @@ class Assemblyai < Formula
   end
 
   def post_install
-    assemblyai welcome -i -v="v0.26" -m=brew
+    system("assemblyai welcome -i -v=v0.26 -m=brew")
   end
 
   test do
