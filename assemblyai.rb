@@ -55,7 +55,7 @@ class Assemblyai < Formula
   end
 
   def post_install
-    etc.install "assemblyai welcome -i -v="v0.27" -m=brew"
+    etc.install "assemblyai welcome -i -v=v0.27 -m=brew"
   end
 
   test do
