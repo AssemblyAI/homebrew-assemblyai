@@ -5,21 +5,21 @@
 class Assemblyai < Formula
   desc "A quick and easy way to test assemblyAI's transcription features on your terminal"
   homepage "https://www.assemblyai.com/"
-  version "1.11.1"
+  version "1.12.1"
   license "Apache 2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.11.1/assemblyai_1.11.1_darwin_amd64.tar.gz"
-      sha256 "67a0312c716abe4816878fff75c5a5c2405158ea9995ad6f95f5baa503e1d0b0"
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.12.1/assemblyai_1.12.1_darwin_amd64.tar.gz"
+      sha256 "67ba81d281c8e9f78f6ad0fcb6173a92246172be2917212ea137952b749c1a97"
 
       def install
         bin.install "assemblyai"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.11.1/assemblyai_1.11.1_darwin_arm64.tar.gz"
-      sha256 "e4c587e743f8ae08868ae86dffbbe887636f9910eea310a81883415987e6824b"
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.12.1/assemblyai_1.12.1_darwin_arm64.tar.gz"
+      sha256 "659901b48857867af0856e352718a118c1f785602e65d99d9f2e2c6c4478c06f"
 
       def install
         bin.install "assemblyai"
@@ -28,25 +28,25 @@ class Assemblyai < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.11.1/assemblyai_1.11.1_linux_armv6.tar.gz"
-      sha256 "5c2d240cb01c59f137884f45b620189162b8e0a108049e6213135358e4b2c6b0"
+    if Hardware::CPU.intel?
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.12.1/assemblyai_1.12.1_linux_amd64.tar.gz"
+      sha256 "8684971760ae9e3bf41462d532585c720c19407e7c561fa9583fdff04649d76e"
 
       def install
         bin.install "assemblyai"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.11.1/assemblyai_1.11.1_linux_amd64.tar.gz"
-      sha256 "2feb0a49f272c6de3783c0224b9aa8d47532813ec6d93d55b6379cf6649ad387"
+    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.12.1/assemblyai_1.12.1_linux_armv6.tar.gz"
+      sha256 "653281d4a1be7e13b12d56c7b60804de3da296502fc3d1e7a13ecdd279ad2d98"
 
       def install
         bin.install "assemblyai"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.11.1/assemblyai_1.11.1_linux_arm64.tar.gz"
-      sha256 "90768b4da5a244ae2b1d5833edc4cbdd29755b2c424a75a96589733ef359feaa"
+      url "https://github.com/AssemblyAI/assemblyai-cli/releases/download/v1.12.1/assemblyai_1.12.1_linux_arm64.tar.gz"
+      sha256 "c744194a8945d499231aa8b473178a63514696f6ca5f315710d9c16f99582ba2"
 
       def install
         bin.install "assemblyai"
